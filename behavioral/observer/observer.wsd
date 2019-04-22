@@ -1,0 +1,18 @@
+@startuml
+
+interface Observer {
+    +OnNotify()
+}
+
+interface Notifier {
+    +List<Observer>
+    +Register(Observer)
+    +Unregister(Observer)
+    +Notify(e Event)
+}
+
+EventObserver ..up|> Observer : implements
+EventNotifier ..up|> Notifier : implements
+EventNotifier ..right|> Observer : uses
+
+@enduml

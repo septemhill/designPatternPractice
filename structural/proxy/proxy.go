@@ -4,6 +4,9 @@ import (
 	"fmt"
 )
 
+type UserFinder interface {
+	FindUser(id int32) (User, error)
+}
 type User struct {
 	ID int32
 }
@@ -22,10 +25,6 @@ func (u *UserList) FindUser(id int32) (User, error) {
 
 func (u *UserList) addUser(n User) {
 	*u = append(*u, n)
-}
-
-type UserFinder interface {
-	FindUser(id int32) (User, error)
 }
 
 type UserListProxy struct {

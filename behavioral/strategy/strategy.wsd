@@ -1,0 +1,14 @@
+@startuml
+
+Operation --up|> s1 : uses
+
+package "s1" <<rectangle>> {
+    interface Operator {
+        Apply(int, int) int
+    }
+
+    Addition ..up|>Operator : implements
+    Multiplication ..up|>Operator : implements
+}
+
+@enduml

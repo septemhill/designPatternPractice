@@ -1,0 +1,19 @@
+@startuml
+interface GameState {
+    ExecuteState(*GameContext)
+}
+
+class GameContext {
+    +int SecretNumber
+    +int Retries
+    +bool Won
+    +GameState Next
+}
+
+GameContext --right|>GameState:uses
+StartState ..up|>GameState:implements
+AskState ..up|>GameState:implements
+FinishState ..up|>GameState:implements
+WinState ..up|>GameState:implements
+LoseState ..up|>GameState:implements
+@enduml

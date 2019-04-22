@@ -1,0 +1,25 @@
+@startuml
+interface UserFinder {
+    FindUser(int id)
+}
+
+class ProxyDemo {
+    +main() void
+}
+
+class UserListProxy {
+    +UserList SomeDatabase
+    +UserList StackCache
+    +int StackCapacity
+    +bool DidLastSearchUsedCache
+}
+
+class UserList {
+    +User[]
+}
+
+ProxyDemo --right|> UserListProxy : asks
+UserListProxy ..up|> UserFinder : implements
+UserList ..up|> UserFinder : implements
+
+@enduml
